@@ -40,12 +40,16 @@ function App() {
     <div>
       <Routes>
         <Route
-          path="register"
+          path="/"
+          element={<Login isLoginPage={false} setIsLogIn={setIsLogIn} />}
+        />
+        <Route
+          path="/register"
           element={<Login isLoginPage={false} setIsLogIn={setIsLogIn} />}
         />
 
         <Route
-          path="login"
+          path="/login"
           element={<Login isLoginPage={true} setIsLogIn={setIsLogIn} />}
         />
 
