@@ -8,7 +8,7 @@ function Login({ setIsLogIn, isLoginPage = true }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [showPassword, setShowPassword] = useState("show");
+  const [showPassword, setShowPassword] = useState("hide");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
