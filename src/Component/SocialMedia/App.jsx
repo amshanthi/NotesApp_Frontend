@@ -16,7 +16,7 @@ function App() {
       return;
     }
 
-    fetch("http://localhost:5000/profile", {
+    fetch("https://notesapp-backend-bntk.onrender.com/profile", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,

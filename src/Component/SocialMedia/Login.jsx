@@ -41,16 +41,19 @@ function Login({ setIsLogIn, isLoginPage = true }) {
       setError("Password should be 6 character");
       return;
     }
-    const res = await fetch("http://localhost:5000/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    const res = await fetch(
+      "https://notesapp-backend-bntk.onrender.com/register",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username,
+          password,
+        }),
       },
-      body: JSON.stringify({
-        username,
-        password,
-      }),
-    });
+    );
     setUsername("");
     setPassword("");
     console.log(res);
@@ -66,16 +69,19 @@ function Login({ setIsLogIn, isLoginPage = true }) {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const res = await fetch(
+        "https://notesapp-backend-bntk.onrender.com/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username,
+            password,
+          }),
         },
-        body: JSON.stringify({
-          username,
-          password,
-        }),
-      });
+      );
 
       const data = await res.json();
 

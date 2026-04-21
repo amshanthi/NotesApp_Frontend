@@ -15,7 +15,7 @@ function NewPost({ setIsLogIn, isLoginPage = true }) {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    fetch("http://localhost:5000/user", {
+    fetch("https://notesapp-backend-bntk.onrender.com/user", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -34,7 +34,7 @@ function NewPost({ setIsLogIn, isLoginPage = true }) {
 
   const handleDeleted = (Id) => {
     const token = localStorage.getItem("token");
-    fetch(`http://localhost:5000/delete/${Id}`, {
+    fetch(`https://notesapp-backend-bntk.onrender.com/delete/${Id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -45,7 +45,7 @@ function NewPost({ setIsLogIn, isLoginPage = true }) {
 
   const handlePinned = (id) => {
     const token = localStorage.getItem("token");
-    fetch(`http://localhost:5000/pinned/${id}`, {
+    fetch(`https://notesapp-backend-bntk.onrender.com/pinned/${id}`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,

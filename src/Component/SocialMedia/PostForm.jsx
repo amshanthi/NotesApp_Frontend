@@ -28,8 +28,8 @@ function PostForm({ isEdit = false, existingPost = null, onFinish }) {
       const token = localStorage.getItem("token");
       const res = await fetch(
         isEdit
-          ? `http://localhost:5000/edit/${existingPost._id}`
-          : "http://localhost:5000/sent",
+          ? `https://notesapp-backend-bntk.onrender.com/edit/${existingPost._id}`
+          : "https://notesapp-backend-bntk.onrender.com/sent",
         {
           method: isEdit ? "PUT" : "POST",
           headers: {
