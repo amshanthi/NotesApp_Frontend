@@ -131,7 +131,7 @@ function Login({ setIsLogIn, isLoginPage = true }) {
             />
 
             <Button
-              text={showPassword == "hide" ? "Show " : "hide"}
+              text={showPassword == "hide" ? "show " : "hide"}
               styles={`absolute right-3 top-1/2 -translate-y-1/2 text-sm text-blue-500`}
               type="button"
               onClick={() =>
