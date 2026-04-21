@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+.active-link {
+  color: red;
+  font-weight: bold;
+}
+
+.link {
+  color: white;
+}
+
+
+.
