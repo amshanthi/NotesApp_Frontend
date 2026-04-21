@@ -135,7 +135,7 @@ function Login({ setIsLogIn, isLoginPage = true }) {
               styles={`absolute right-3 top-1/2 -translate-y-1/2 text-sm text-blue-500`}
               type="button"
               onClick={() =>
-                setShowPassword(showPassword == "show" ? "hide" : "show")
+                setShowPassword(showPassword === "show" ? "hide" : "show")
               }
             />
           </div>
