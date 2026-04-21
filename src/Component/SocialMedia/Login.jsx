@@ -121,7 +121,7 @@ function Login({ setIsLogIn, isLoginPage = true }) {
           <div className="relative">
             <InputBox
               styles={`w-full border border-gray-300 rounded-md px-3 py-2 pr-16 focus:outline-none focus:ring-2 focus:ring-blue-500`}
-              type={showPassword === "show" ? "text" : "password"}
+              type={showPassword === "hide" ? "text" : "password"}
               placeholder="Password"
               value={password}
               changeHandler={(e) => {
@@ -135,7 +135,7 @@ function Login({ setIsLogIn, isLoginPage = true }) {
               styles={`absolute right-3 top-1/2 -translate-y-1/2 text-sm text-blue-500`}
               type="button"
               onClick={() =>
-                setShowPassword(showPassword == "show" ? "hide" : "show")
+                setShowPassword(showPassword == "hide" ? "hide" : "show")
               }
             />
           </div>
