@@ -131,11 +131,11 @@ function Login({ setIsLogIn, isLoginPage = true }) {
             />
 
             <Button
-              text={showPassword}
+              text={showPassword == "hide" ? "Show " : "hide"}
               styles={`absolute right-3 top-1/2 -translate-y-1/2 text-sm text-blue-500`}
               type="button"
               onClick={() =>
-                setShowPassword(showPassword === "hide" ? "hide" : "show")
+                setShowPassword(showPassword === "show" ? "hide" : "show")
               }
             />
           </div>
