@@ -1,12 +1,14 @@
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Login from "./Login";
 import Register from "./Register";
 import NewPost from "./NewPost";
 import Notes from "./notes";
+import Button from "./UiComponent/Button";
 
 function App() {
   const [isLogIn, setIsLogIn] = useState(false);
+  const navigate = useNavigate();
 
   // check token on load
   useEffect(() => {
@@ -39,10 +41,8 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route
-          path="/"
-          element={<Login isLoginPage={false} setIsLogIn={setIsLogIn} />}
-        />
+        <Route path="/" element={<Navigate to="/login" />} />
+
         <Route
           path="/register"
           element={<Login isLoginPage={false} setIsLogIn={setIsLogIn} />}
