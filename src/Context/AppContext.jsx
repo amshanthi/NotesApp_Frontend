@@ -4,8 +4,7 @@ import { useState } from "react";
 export const AppContext = createContext();
 
 function AppProvider({ children }) {
-  const [isLogIn, setIsLogIn] = useState(false);
-  const value = { isLogIn, setIsLogIn };
+  const value = {};
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }

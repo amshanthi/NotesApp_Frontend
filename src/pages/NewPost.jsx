@@ -43,17 +43,17 @@ function NewPost({ setIsLogIn, isLoginPage = true }) {
     setPosts(posts.filter((post) => post._id != Id));
   };
 
-  const handlePinned = (id) => {
-    const token = localStorage.getItem("token");
-    fetch(`http://localhost:5000/pinned/${id}`, {
-      // fetch(`https://notesapp-backend-bntk.onrender.com/pinned/${id}`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    setCheck(posts.filter((post) => (post.pinned === false ? true : false)));
-  };
+  // const handlePinned = (id) => {
+  //   const token = localStorage.getItem("token");
+  //   fetch(`http://localhost:5000/pinned/${id}`, {
+  //     // fetch(`https://notesapp-backend-bntk.onrender.com/pinned/${id}`, {
+  //     method: "POST",
+  //     headers: {
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   });
+  //   setPosts(posts.filter((post) => (post.pinned === false ? true : false)));
+  // };
 
   const handleaddPost = () => {
     setisExist(null);

@@ -59,7 +59,7 @@ function App() {
             isLogIn ? (
               <NewPost isLoginPage={true} setIsLogIn={setIsLogIn} />
             ) : (
-              <Login isLoginPage={true} setIsLogIn={setIsLogIn} />
+              <Navigate to="/login" replace />
             )
           }
         />
