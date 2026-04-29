@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import InputBox from "./UiComponent/InputBox";
-import Button from "./UiComponent/Button";
+import InputBox from "../Component/InputBox";
+import Button from "../Component/Button";
 
 function Login({ setIsLogIn, isLoginPage = true }) {
   const navigate = useNavigate();
@@ -42,7 +42,7 @@ function Login({ setIsLogIn, isLoginPage = true }) {
       return;
     }
     const res = await fetch(
-      "https://notesapp-backend-bntk.onrender.com/register",
+      "http://localhost:5000/register", //"https://notesapp-backend-bntk.onrender.com/register",
       {
         method: "POST",
         headers: {
@@ -70,7 +70,7 @@ function Login({ setIsLogIn, isLoginPage = true }) {
 
     try {
       const res = await fetch(
-        "https://notesapp-backend-bntk.onrender.com/login",
+        "http://localhost:5000/login", // "https://notesapp-backend-bntk.onrender.com/login",
         {
           method: "POST",
           headers: {

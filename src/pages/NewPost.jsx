@@ -1,21 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
-import Navbar from "./Navbar";
+import Navbar from "../Component/Navbar";
 import PostForm from "./PostForm";
-import Button from "./UiComponent/Button";
+import Button from "../Component/Button";
 import PostItem from "./PostItem";
-import { useNavigate } from "react-router-dom";
 
 function NewPost({ setIsLogIn, isLoginPage = true }) {
   const [mode, setMode] = useState("list");
   const [isExist, setisExist] = useState(null);
   const [posts, setPosts] = useState([]);
   const [userName, setUserName] = useState(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    fetch("https://notesapp-backend-bntk.onrender.com/user", {
+    fetch("http://localhost:5000/user", {
+      //fetch("https://notesapp-backend-bntk.onrender.com/user", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -34,7 +33,8 @@ function NewPost({ setIsLogIn, isLoginPage = true }) {
 
   const handleDeleted = (Id) => {
     const token = localStorage.getItem("token");
-    fetch(`https://notesapp-backend-bntk.onrender.com/delete/${Id}`, {
+    fetch(`http://localhost:5000/delete/${Id}`, {
+      //fetch(`https://notesapp-backend-bntk.onrender.com/delete/${Id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -45,7 +45,8 @@ function NewPost({ setIsLogIn, isLoginPage = true }) {
 
   const handlePinned = (id) => {
     const token = localStorage.getItem("token");
-    fetch(`https://notesapp-backend-bntk.onrender.com/pinned/${id}`, {
+    fetch(`http://localhost:5000/pinned/${id}`, {
+      // fetch(`https://notesapp-backend-bntk.onrender.com/pinned/${id}`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
