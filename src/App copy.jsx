@@ -1,14 +1,13 @@
 import { Route, Routes, useNavigate, Navigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import Login from "./Login";
-import Register from "./Register";
-import NewPost from "./NewPost";
-import Notes from "./notes";
-import Button from "./UiComponent/Button";
+import { useContext, useEffect, useState } from "react";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import NewPost from "./pages/NewPost";
+import Button from "./Component/Button";
+import { AppContext } from "./Context/AppContext";
 
 function App() {
   const [isLogIn, setIsLogIn] = useState(false);
-  const navigate = useNavigate();
 
   // check token on load
   useEffect(() => {
@@ -18,7 +17,8 @@ function App() {
       return;
     }
 
-    fetch("https://notesapp-backend-bntk.onrender.com/profile", {
+    fetch("http://localhost:5000/profile", {
+      //fetch("https://notesapp-backend-bntk.onrender.com/profile", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -67,5 +67,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

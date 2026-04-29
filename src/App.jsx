@@ -1,34 +1,71 @@
-import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
+import { Route, Routes, useNavigate, Navigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import NewPost from "./pages/NewPost";
+import Button from "./Component/Button";
+import { AppContext } from "./Context/AppContext";
 
-export default function App() {
-  function loginHandler() {}
+function App() {
+  const [isLogIn, setIsLogIn] = useState(false);
+
+  // check token on load
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setIsLogIn(false);
+      return;
+    }
+
+    fetch("http://localhost:5000/profile", {
+      //fetch("https://notesapp-backend-bntk.onrender.com/profile", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Invalid token");
+        return res.json();
+      })
+      .then((data) => {
+        console.log("Data " + data);
+        setIsLogIn(true);
+      })
+      .catch(() => {
+        localStorage.removeItem("token");
+        setIsLogIn(false);
+      });
+  }, []);
+
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="flex flex-col justify-center items-center gap-4 border-2 m-4 p-6 w-80">
-        <div className="flex flex-col w-full">
-          <label className="mb-1">Username</label>
-          <input
-            type="text"
-            className="border p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-        </div>
+    <div>
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
 
-        <div className="flex flex-col w-full">
-          <label className="mb-1">Password</label>
-          <input
-            type="password"
-            className="border p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-        </div>
+        <Route
+          path="/register"
+          element={<Login isLoginPage={false} setIsLogIn={setIsLogIn} />}
+        />
 
-        <button
-          onClick={loginHandler}
-          className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
-        >
-          Login
-        </button>
-      </div>
+        <Route
+          path="/login"
+          element={<Login isLoginPage={true} setIsLogIn={setIsLogIn} />}
+        />
+
+        <Route
+          path="/dashboard"
+          element={
+            isLogIn ? (
+              <NewPost isLoginPage={true} setIsLogIn={setIsLogIn} />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+      </Routes>
     </div>
   );
 }
+
+export default App;

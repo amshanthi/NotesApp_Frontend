@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Button from "./UiComponent/Button";
-import InputBox from "./UiComponent/InputBox";
+import Button from "../Component/Button";
+import InputBox from "../Component/InputBox";
 
 function PostForm({ isEdit = false, existingPost = null, onFinish }) {
   const [data, setData] = useState({
